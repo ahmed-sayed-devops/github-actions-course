@@ -4,10 +4,11 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-      - name: First
-        run: echo " befor API Key $API_KEY"
-      - name: Set API Key
-        run: echo "API_KEY=12345" 
-      - name: Use API Key
-        run: echo "Using API Key $API_KEY"
+      - name: Check If File Exists
+        run: |
+          if [ -f "config.yaml" ]; then
+            echo "::debug::config.yaml exists"
+          else
+            echo "::error::config.yaml is missing"
+          fi  
         
