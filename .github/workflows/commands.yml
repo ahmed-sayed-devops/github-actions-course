@@ -4,11 +4,10 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Check If File Exists
+      - name: Set API Key
+        run: echo " API_KEY=12345" >> $GITHUB_ENV
+      - name: Use API Key
         run: |
-          if [ -f "config.yaml" ]; then
-            echo "::debug::config.yaml exists"
-          else
-            echo "::error::config.yaml is missing"
-          fi  
+          echo "::add-mask::$API_KEY"
+          echo "Using API KEY $API_KEY"
         
