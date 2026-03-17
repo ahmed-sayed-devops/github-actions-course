@@ -1,6 +1,5 @@
 on: 
-  repository_dispatch:
-    types: [incident_report]
+  workflow_dispatch:
 jobs:
   handle-incident:
     runs-on: ubuntu-latest
