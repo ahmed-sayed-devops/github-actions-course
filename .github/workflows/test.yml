@@ -19,7 +19,7 @@ jobs:
     - name: run a script on docker cont 
       uses: docker://alpine:latest
       with:
-        enterypoint: /bin/bash
+        enterypoint: /bin/sh
         args: -c "echo 'this script runs on docker cont'"
     - name: run another script on VM
       run: echo "script runs another time on VM"
