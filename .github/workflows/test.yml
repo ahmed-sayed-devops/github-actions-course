@@ -1,16 +1,13 @@
 on:
   workflow_dispatch:
 jobs:
-  job_1:
-    strategy:
-      fail-fast: false
-      max-parallel: 3
-      matrix:
-        os: [ ubuntu-latest , windows-latest , macos-latest ]
-        node-version: [ 14.x , 16.x , 18.x ]
-    runs-on: ${{ matrix.os }}
+  expressions:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v6.3.0
-        with: 
-          node-version: ${{ matrix.node-version }}
-    
+      - name: run with PR only
+        run: echo " PR event"
+        if: ${{ github.event_name == 'pullrequest' }}
+      - name: run with push event
+        run: echo "push event"
+        if: ${{ github.event_name == 'push' }}
+        
