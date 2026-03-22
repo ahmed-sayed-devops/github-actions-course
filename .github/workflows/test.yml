@@ -5,7 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: run with PR only
-        run: echo " PR event"
+        run: |
+          echo " PR event"
+          run: echo ${{ github.event_name }}
         if: ${{ github.event_name != 'pullrequest' }}
       - name: run with push event
         run: echo "push event"
